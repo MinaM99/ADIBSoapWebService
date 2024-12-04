@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            targetNamespace="http://soap.jee.mcnz.com/" 
+            xmlns:tns="http://soap.jee.mcnz.com/" 
+            elementFormDefault="qualified">
+
+    <!-- Request Element -->
+    <xsd:element name="GetContentRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="IdentitiesList" type="tns:IdentitiesList"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!-- Response Element -->
+    <xsd:element name="GetContentResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="ContentURLsList" type="tns:ContentURLsList"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!-- Complex Types -->
+    <xsd:complexType name="IdentitiesList">
+        <xsd:sequence>
+            <xsd:element name="ContentIdentity" type="tns:ContentIdentity"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ContentIdentity">
+        <xsd:sequence>
+            <xsd:element name="ContentID" type="xsd:string"/>
+            <xsd:element name="IdentityType" type="xsd:string"/>
+            <xsd:element name="RepositoryName" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ContentURLsList">
+        <xsd:sequence>
+            <xsd:element name="ContentURLsInfo" type="tns:ContentURLsInfo"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ContentURLsInfo">
+        <xsd:sequence>
+            <xsd:element name="ContentBodiesList" type="tns:ContentBodiesList"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ContentBodiesList">
+        <xsd:sequence>
+            <xsd:element name="ContentBodyInfo" type="tns:ContentBodyInfo"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ContentBodyInfo">
+        <xsd:sequence>
+            <xsd:element name="Type" type="xsd:string"/>
+            <xsd:element name="RepositoryName" type="xsd:string"/>
+            <xsd:element name="Content" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

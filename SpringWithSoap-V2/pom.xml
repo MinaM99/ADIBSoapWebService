@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.10</version> <!-- Spring Boot version compatible with Java
+		11 -->
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+
+	<groupId>com.mcnz.spring.soap</groupId>
+	<artifactId>SpringWithSoap-V2</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>SpringWithSoap-V2</name>
+	<description>Content Retieve project for Spring Boot</description>
+	<url />
+	<licenses>
+		<license />
+	</licenses>
+	<developers>
+		<developer />
+	</developers>
+	<scm>
+		<connection />
+		<developerConnection />
+		<tag />
+		<url />
+	</scm>
+	<properties>
+		<java.version>11</java.version> <!-- Use Java 11 -->
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+		</dependency>
+		<!-- Spring Boot starter web (with embedded Tomcat by default) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Spring Boot starter web services (for SOAP support) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Spring Boot DevTools for development (optional) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Exclude the embedded Tomcat and specify Tomcat 9.0.82 for WAR
+			packaging -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Tomcat 9.0.82 (ensure it works with your WAR) -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-core</artifactId>
+			<version>9.0.82</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-websocket</artifactId>
+			<version>9.0.82</version>
+		</dependency>
+		<!-- Add javax JAXB dependencies -->
+
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.3</version>
+		</dependency>
+
+		<!--DOCUMENTUM JARS INCLUDED FROM LIB FOLDER  -->
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/activation.jar</systemPath>
+
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>aspectjtools</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/aspectjtools.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>bpmutil</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/bpmutil.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>bpm_infra_da</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/bpm_infra_da.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>castor-core-1.4.1</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/castor-core-1.4.1.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>castor-xml-1.4.1</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/castor-xml-1.4.1.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>castor-xml-schema-1.4.1</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/castor-xml-schema-1.4.1.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>ci</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/ci.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>ci_FOR_TEST</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/ci_FOR_TEST.jar</systemPath>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>collaboration</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/collaboration.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>commons-cli-1.0</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/commons-cli-1.0.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>commons-codec-1.15</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/commons-codec-1.15.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>commons-io-2.7</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/commons-io-2.7.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>commons-jxpath-1.2</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/commons-jxpath-1.2.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>commons-lang3-3.12.0</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/commons-lang3-3.12.0.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>configservice-api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/configservice-api.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>configservice-impl</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/configservice-impl.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>dfc</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/dfc.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>dms-client-api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/dms-client-api.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>dtd-parser</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/dtd-parser.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>EccpressoAll</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/EccpressoAll.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>elmjava3_1_0-jdk1.5.0_12</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/elmjava3_1_0-jdk1.5.0_12.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-admin-services</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-admin-services.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-admin-services-remote</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-admin-services-remote.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-admin-services</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-admin-services.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-bpm-services-remote</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-bpm-services-remote.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-bpm-services</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-bpm-services.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-ci-services-remote</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-ci-services-remote.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-ci-services</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-ci-services.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-collaboration-services-remote</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-collaboration-services-remote.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-collaboration-services</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-collaboration-services.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-dfs-rt-remote</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-dfs-rt-remote.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-dfs-rt</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-dfs-rt.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-dfs-services-remote</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-dfs-services-remote.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-dfs-services</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-dfs-services.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-dfs-tools</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-dfs-tools.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-search-services-remote</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-search-services-remote.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>emc-search-services</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-search-services.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>extended-search-api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/extended-search-api.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>FastInfoset</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/FastInfoset.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>flexlm</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/flexlm.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>gmbal-api-only</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/gmbal-api-only.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>ha-api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/ha-api.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>http</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/http.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>istack-commons-runtime-3.0.7</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/istack-commons-runtime-3.0.7.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>istack-commons-runtime</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/istack-commons-runtime.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>istack-commons-tools</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/istack-commons-tools.jar</systemPath>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>javax-activation-api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/javax.activation-api.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/jaxb-api.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/jaxb-impl.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>jaxb-jxc</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/jaxb-jxc.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>jaxb-xjc</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/jaxb-xjc.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>jaxr-api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/jaxr-api.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>jaxr-impl</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/jaxr-impl.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>jaxws-api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/jaxws-api.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>jaxws-rt</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/jaxws-rt.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>jaxws-tools</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/jaxws-tools.jar</systemPath>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>jsr173_api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/jsr173_api.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>jsr181-api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/jsr181-api.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>jsr250-api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/jsr250-api.jar</systemPath>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>management-api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/management-api.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>mimepull</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/mimepull.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>policy</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/policy.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>relaxng-datatype</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/relaxng-datatype.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>resolver</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/resolver.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>rngom</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/rngom.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>saaj-api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/saaj-api.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>saaj-impl</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/saaj-impl.jar</systemPath>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>stax-ex</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/stax-ex.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>stax2-api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/stax2-api.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>streambuffer</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/streambuffer.jar</systemPath>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>txw2</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/txw2.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>woodstox-core</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/woodstox-core.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>workflow</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/workflow.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>xerces-impl</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/xerces-impl.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>xml-apis-1.4.01</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/xml-apis-1.4.01.jar</systemPath>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>xmltooling-1.4.6</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/xmltooling-1.4.6.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>xsom</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/xsom.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>xtrim-api</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/xtrim-api.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.documentum</groupId>
+			<artifactId>xtrim-server</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>
+				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/xtrim-server.jar</systemPath>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.20.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.20.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>2.20.0</version>
+		</dependency>
+		<dependency>
+    <groupId>com.sun.codemodel</groupId>
+    <artifactId>codemodel</artifactId>
+    <version>2.0</version>
+</dependency>
+
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>2.5.0</version>
+				<executions>
+					<execution>
+						<id>xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<sources>
+						<source>src/main/resources/contentretrieve.xsd</source>
+					</sources>
+					<outputDirectory>src/main/java</outputDirectory>
+					<clearOutputDir>false</clearOutputDir>
+				</configuration>
+			</plugin>
+			<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.3.2</version>
+            <configuration>
+                <webResources>
+                    <resource>
+                        <directory>${basedir}/lib</directory>
+                        <targetPath>WEB-INF/lib</targetPath>
+                        <includes>
+                            <include>*.jar</include>
+                        </includes>
+                    </resource>
+                </webResources>
+            </configuration>
+        </plugin>
+
+		</plugins>
+	</build>
+
+</project>
