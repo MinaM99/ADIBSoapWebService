@@ -17,23 +17,26 @@ Maven: For building and managing project dependencies.
 ---
 
 ## 🚀 How to Build and Run the Application in Eclipse
-Build the Project:
+### Build, Clean, Install, and Run the Project
 
-Right-click on the project in the Eclipse Project Explorer.
-Select Maven -> Update Project.
-Clean the Project:
+#### 1. Build the Project:
+- Right-click on the project in the Eclipse Project Explorer.
+- Select **Maven** → **Update Project**.
 
-Right-click on the project.
-Select Run As -> Maven clean.
-Install the Project:
+#### 2. Clean the Project:
+- Right-click on the project.
+- Select **Run As** → **Maven clean**.
 
-Right-click on the project.
-Select Run As -> Maven install.
-Run the Application:
+#### 3. Install the Project:
+- Right-click on the project.
+- Select **Run As** → **Maven install**.
 
-Right-click on the project.
-Select Run As -> Spring Boot App.
-Test the application using tools like Postman or SOAPUI.
+#### 4. Run the Application:
+- Right-click on the project.
+- Select **Run As** → **Spring Boot App**.
+
+#### 5. Test the Application:
+Use tools like **Postman** or **SOAPUI** to test the application at `http://localhost:8080/ws`.
 
 ## 📜 Generated WSDL File
 The WSDL file for this SOAP service is automatically generated and can be accessed at:
