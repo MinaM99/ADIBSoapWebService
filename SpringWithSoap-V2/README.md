@@ -73,12 +73,14 @@ Below is a sample SOAP request body that you can use to test the web service:
 </soapenv:Envelope>
 ```
 
+
 ## 📝 Notes
 Replace placeholders in the sample request body with actual values:
 
-<soap:ContentID>: Add the desired content ID.
-<soap:IdentityType>: Specify the identity type.
-<soap:RepositoryName>: Provide the repository name.
+- `<soap:ContentID>`: Add the desired content ID.
+- `<soap:IdentityType>`: Specify the identity type.
+- `<soap:RepositoryName>`: Provide the repository name.
+
 Make sure your Spring Boot application is running on localhost:8080 before testing.
 
 The video tutorial provides step-by-step guidance for creating this project, including:
@@ -86,5 +88,6 @@ The video tutorial provides step-by-step guidance for creating this project, inc
 Generating Java classes from the XSD file.
 Configuring the application.properties file.
 Setting up the SOAP web service endpoint.
+
 
 
