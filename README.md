@@ -60,13 +60,15 @@ Below is a sample SOAP request body that you can use to test the web service:
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.jee.mcnz.com/">
    <soapenv:Header/>
    <soapenv:Body>
-      <soap:IdentitiesList>
-         <soap:ContentIdentity>
-            <soap:ContentID>?????</soap:ContentID>
-            <soap:IdentityType>?????</soap:IdentityType>
-            <soap:RepositoryName>?????</soap:RepositoryName>
-         </soap:ContentIdentity>
-      </soap:IdentitiesList>
+      <soap:GetContentRequest>
+         <soap:IdentitiesList>
+            <soap:ContentIdentity>
+               <soap:ContentID>?????</soap:ContentID>
+               <soap:IdentityType>?????</soap:IdentityType>
+               <soap:RepositoryName>?????</soap:RepositoryName>
+            </soap:ContentIdentity>
+         </soap:IdentitiesList>
+      </soap:GetContentRequest>
    </soapenv:Body>
 </soapenv:Envelope>
 ```
