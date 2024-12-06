@@ -11,8 +11,8 @@ This project demonstrates how to create a Spring Boot SOAP application using a d
 
 ## 💻 Development Environment
 Tools Used:
-Eclipse IDE: Used for project development.
-Maven: For building and managing project dependencies.
+- Eclipse IDE: Used for project development.
+- Maven: For building and managing project dependencies.
 
 ---
 
