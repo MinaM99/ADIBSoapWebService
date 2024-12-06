@@ -20,8 +20,7 @@ import com.mcnz.jee.soap.ContentBodiesList;
 import com.mcnz.jee.soap.ContentBodyInfo;
 import com.mcnz.jee.soap.ContentURLsInfo;
 import com.mcnz.jee.soap.ContentURLsList;
-import com.mcnz.jee.soap.GetContentRequest;
-import com.mcnz.jee.soap.GetContentResponse;
+import com.mcnz.jee.soap.IdentitiesList;
 
 
 @Endpoint
@@ -37,13 +36,13 @@ public class ContentEndpoint {
     private String repoName;
     
     
-	@PayloadRoot(namespace = "http://soap.jee.mcnz.com/", localPart ="GetContentRequest")
+	@PayloadRoot(namespace = "http://soap.jee.mcnz.com/", localPart ="IdentitiesList")
 	@ResponsePayload
-	public GetContentResponse getContent(@RequestPayload GetContentRequest request) throws Exception {
+	public ContentURLsList getContent(@RequestPayload IdentitiesList request) throws Exception {
 		
-		String contentID = request.getIdentitiesList().getContentIdentity().getContentID();
-		String identityType = request.getIdentitiesList().getContentIdentity().getIdentityType();
-		String repositoryName = request.getIdentitiesList().getContentIdentity().getRepositoryName();
+		String contentID = request.getContentIdentity().getContentID();
+		String identityType = request.getContentIdentity().getIdentityType();
+		String repositoryName = request.getContentIdentity().getRepositoryName();
 		
 		/////////DOCUMENTUM SESSION PART //////////////////////////////
 		
@@ -94,15 +93,10 @@ public class ContentEndpoint {
         
         ContentURLsInfo contentURLsInfo = new ContentURLsInfo();
        
-       contentURLsInfo.setContentBodiesList(contentBodiesList);
-        
-        ContentURLsList contentURLsList = new ContentURLsList();
-        contentURLsList.setContentURLsInfo(contentURLsInfo);
-
-
-        
-        GetContentResponse response = new GetContentResponse();
-		response.setContentURLsList(contentURLsList);
+        contentURLsInfo.setContentBodiesList(contentBodiesList);
+             
+        ContentURLsList response = new ContentURLsList();
+		response.setContentURLsInfo(contentURLsInfo);
 		return response;
 		
 	}
