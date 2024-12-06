@@ -4,7 +4,7 @@ This project demonstrates how to create a Spring Boot SOAP application using a d
 
 ---
 
-## 📺 Tutorial Link for a similar project to mine
+## 📺 Tutorial Link for Spring Boot SOAP Web Service Example:
 [Spring Boot SOAP Project Using an XSD File - Video Tutorial](https://www.youtube.com/watch?v=MIDEXcU-Bmg&ab_channel=CameronMcKenzie)
 
 ---
