@@ -1,3 +1,5 @@
+### This branch we customized the structure for the request and response a little bit (modified contentretrieve.xsd)
+
 # Spring Boot SOAP Project
 
 This project demonstrates how to create a Spring Boot SOAP application using a desired XSD file. It also integrates with **Documentum** to fetch content from its repository and return it as a Base64-encoded string. Follow along with the video tutorial linked below to set up the project.
