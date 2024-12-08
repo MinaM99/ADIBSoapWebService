@@ -82,15 +82,11 @@ Replace placeholders in the sample request body with actual values:
 - `<soap:RepositoryName>`: Provide the repository name.
 
 Make sure your Spring Boot application is running on localhost:8080 before testing.
+- Don't forget to change the system path for most of the dependencies in the pom.xml.
 
 The video tutorial provides step-by-step guidance for creating this project, including:
 
 Generating Java classes from the XSD file.  
 Configuring the application.properties file.  
 Setting up the SOAP web service endpoint.  
-Don't forget to change the system path for most of the dependencies in the pom.xml.
-
-
-
-
 
