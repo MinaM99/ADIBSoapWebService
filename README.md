@@ -88,7 +88,7 @@ The video tutorial provides step-by-step guidance for creating this project, inc
 Generating Java classes from the XSD file.
 Configuring the application.properties file.
 Setting up the SOAP web service endpoint.
-
+Don't forget to change system path for most of the dependencies in the pom.xml
 
 
 
