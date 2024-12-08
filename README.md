@@ -85,10 +85,11 @@ Make sure your Spring Boot application is running on localhost:8080 before testi
 
 The video tutorial provides step-by-step guidance for creating this project, including:
 
-Generating Java classes from the XSD file.
-Configuring the application.properties file.
-Setting up the SOAP web service endpoint.
-Don't forget to change system path for most of the dependencies in the pom.xml
+Generating Java classes from the XSD file.  
+Configuring the application.properties file.  
+Setting up the SOAP web service endpoint.  
+Don't forget to change the system path for most of the dependencies in the pom.xml.
+
 
 
 
