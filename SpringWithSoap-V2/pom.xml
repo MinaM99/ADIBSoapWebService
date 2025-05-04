@@ -11,13 +11,20 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
+	<properties>
+		<java.version>11</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+	</properties>
 
 	<groupId>com.mcnz.spring.soap</groupId>
 	<artifactId>SpringWithSoap-V2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>SpringWithSoap-V2</name>
-	<description>Content Retieve project for Spring Boot</description>
+	<description>Content Retrieve project for Spring Boot</description>
 	<url />
 	<licenses>
 		<license />
@@ -31,9 +38,7 @@
 		<tag />
 		<url />
 	</scm>
-	<properties>
-		<java.version>11</java.version> <!-- Use Java 11 -->
-	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>wsdl4j</groupId>
@@ -321,15 +326,6 @@
 			<scope>system</scope>
 			<systemPath>
 				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-admin-services-remote.jar</systemPath>
-		</dependency>
-
-		<dependency>
-			<groupId>com.documentum</groupId>
-			<artifactId>emc-admin-services</artifactId>
-			<version>1.0.0</version>
-			<scope>system</scope>
-			<systemPath>
-				C:/Users/mina.maher/eclipse-workspace/SpringWithSoap-V2/lib/emc-admin-services.jar</systemPath>
 		</dependency>
 
 		<dependency>
