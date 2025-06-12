@@ -38,11 +38,11 @@ Tools Used:
 #### 5. Test the Application:
 Use tools like **Postman** or **SOAPUI** to test the application at `http://localhost:8080/ws`.
 
-## 📜 Generated WSDL File
-The WSDL file for this SOAP service is automatically generated and can be accessed at:
+## 📜 Generated WSDL Files
+The WSDL files for this SOAP service are automatically generated and can be accessed at:
 
 ```plaintext
-http://localhost:8080/ws/content.wsdl
+http://localhost:8080/ws/contentretrieve.wsdl
 ```
 
 ## 🛠️ Endpoint for Testing
@@ -54,11 +54,16 @@ http://localhost:8080/ws
 ```
 
 ## 📨 Sample Request Body
-Below is a sample SOAP request body that you can use to test the web service:
+Below is a sample SOAP request body that you can use to test the web service, including the required authentication header:
 
-```plaintext
+```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.jee.mcnz.com/">
-   <soapenv:Header/>
+   <soapenv:Header>
+      <soap:AuthenticationHeader>
+         <soap:username>???</soap:username>
+         <soap:password>???</soap:password>
+      </soap:AuthenticationHeader>
+   </soapenv:Header>
    <soapenv:Body>
       <soap:IdentitiesList>
          <soap:ContentIdentity>
@@ -70,6 +75,14 @@ Below is a sample SOAP request body that you can use to test the web service:
    </soapenv:Body>
 </soapenv:Envelope>
 ```
+
+## 🔐 Authentication
+This version of the project requires authentication for SOAP requests. You must include a WS-Security header in your SOAP envelope, as shown in the sample request above. Replace `your-username` and `your-password` with valid credentials. The application will validate these credentials before processing the request.
+
+## 🆕 What’s New in This Branch/Version?
+- **Authentication Added:** SOAP requests now require a WS-Security UsernameToken in the header for authentication.
+- **Enhanced Security:** Only authenticated users can access the SOAP endpoints.
+- **Other Improvements:** (Add any other changes here if applicable, such as refactoring, bug fixes, or integration updates.)
 
 ## 📝 Notes
 Replace placeholders in the sample request body with actual values:
@@ -85,9 +98,4 @@ The video tutorial provides step-by-step guidance for creating this project, inc
 
 Generating Java classes from the XSD file.  
 Configuring the application.properties file.  
-Setting up the SOAP web service endpoint.  
-
-
-
-
-
+Setting up the SOAP web service endpoint.

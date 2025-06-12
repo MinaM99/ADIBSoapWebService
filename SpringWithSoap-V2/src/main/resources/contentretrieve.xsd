@@ -4,6 +4,16 @@
             xmlns:tns="http://soap.jee.mcnz.com/" 
             elementFormDefault="qualified">
 
+    <!-- Authentication Header Elements -->
+    <xsd:element name="AuthenticationHeader">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="username" type="xsd:string"/>
+                <xsd:element name="password" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
     <!-- Request Element -->
     <xsd:element name="IdentitiesList">
         <xsd:complexType>
