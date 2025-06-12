@@ -82,7 +82,6 @@ This version of the project requires authentication for SOAP requests. You must 
 ## 🆕 What’s New in This Branch/Version?
 - **Authentication Added:** SOAP requests now require a WS-Security UsernameToken in the header for authentication.
 - **Enhanced Security:** Only authenticated users can access the SOAP endpoints.
-- **Other Improvements:** (Add any other changes here if applicable, such as refactoring, bug fixes, or integration updates.)
 
 ## 📝 Notes
 Replace placeholders in the sample request body with actual values:
