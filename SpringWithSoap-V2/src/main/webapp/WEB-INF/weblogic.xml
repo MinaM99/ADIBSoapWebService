@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app">
+    <container-descriptor>
+        <!-- Prefer application packages over WebLogic's -->
+        <prefer-application-packages>
+            <package-name>org.springframework.*</package-name>
+            <package-name>org.slf4j.*</package-name>
+            <package-name>com.fasterxml.jackson.*</package-name>
+            <package-name>org.apache.tomcat.*</package-name>
+        </prefer-application-packages>
+    </container-descriptor>
+</weblogic-web-app>
+
